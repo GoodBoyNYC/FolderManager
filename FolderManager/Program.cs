@@ -32,15 +32,22 @@ namespace FolderManager
 
         static void Main(string[] args)
         {
+            string sourceDir, destDir;
+
             Console.WriteLine("Starting it up");
             Console.WriteLine("---------------------------------------");
             DateTime currentDay = DateTime.Today; //formwat with "MM-dd-yyyy"
+            string dateFormat = "MM-dd-yyyy";
+            
             int count = 0;
 
-            string sourceDir, destDir;
             sourceDir = "C:\\Users\\GoodBoy\\Downloads\\";
+            destDir = "C:\\Users\\GoodBoy\\Downloads\\";
 
             DirectoryInfo dir = new DirectoryInfo(sourceDir);
+            Console.WriteLine(sourceDir + currentDay.ToString("MM-dd-yyyy"));
+            DirectoryInfo dest = Directory.CreateDirectory(sourceDir + currentDay.ToString());
+
 
             List<FileInfo> filesDoc = new List<FileInfo>();
             List<FileInfo> filesMusic = new List<FileInfo>();
