@@ -116,15 +116,64 @@ namespace FolderManager
             //if folder exists
             //create Folders with extensions
             //DirectoryInfo extFolder = new DirectoryInfo(destDir);
-            DirectoryInfo newFolder = Directory.CreateDirectory(destDir + "\\" + "Files");
+            DirectoryInfo newFolder;
 
             if (filesDoc.Count > 0)
             {
-                //create folder with this extension 11/21
+                newFolder = Directory.CreateDirectory(destDir + "\\" + "Files");
+                //create folder with this extension 11/21   
                 foreach (FileInfo x in filesDoc)
                 {
                     //soure+file -> newFolder
                     File.Move(sourceDir + "\\" + x.ToString(), destDir + "\\" + "Files" + "\\" + x.ToString());
+                    Console.WriteLine(x.ToString());
+                }
+            }
+
+            if (filesMusic.Count > 0)
+            {
+                newFolder = Directory.CreateDirectory(destDir + "\\" + "Music");
+                //create folder with this extension 11/21   
+                foreach (FileInfo x in filesMusic)
+                {
+                    //soure+file -> newFolder
+                    File.Move(sourceDir + "\\" + x.ToString(), destDir + "\\" + "Music" + "\\" + x.ToString());
+                    Console.WriteLine(x.ToString());
+                }
+            }
+
+            if (filesPics.Count > 0)
+            {
+                newFolder = Directory.CreateDirectory(destDir + "\\" + "Pics");
+                //create folder with this extension 11/21   
+                foreach (FileInfo x in filesPics)
+                {
+                    //soure+file -> newFolder
+                    File.Move(sourceDir + "\\" + x.ToString(), destDir + "\\" + "Pics" + "\\" + x.ToString());
+                    Console.WriteLine(x.ToString());
+                }
+            }
+
+            if (filesExe.Count > 0)
+            {
+                newFolder = Directory.CreateDirectory(destDir + "\\" + "Programs");
+                //create folder with this extension 11/21   
+                foreach (FileInfo x in filesExe)
+                {
+                    //soure+file -> newFolder
+                    File.Move(sourceDir + "\\" + x.ToString(), destDir + "\\" + "Programs" + "\\" + x.ToString());
+                    Console.WriteLine(x.ToString());
+                }
+            }
+
+            if (filesEtc.Count > 0)
+            {
+                newFolder = Directory.CreateDirectory(destDir + "\\" + "Etc");
+                //create folder with this extension 11/21   
+                foreach (FileInfo x in filesEtc)
+                {
+                    //soure+file -> newFolder
+                    File.Move(sourceDir + "\\" + x.ToString(), destDir + "\\" + "Etc" + "\\" + x.ToString());
                     Console.WriteLine(x.ToString());
                 }
             }
