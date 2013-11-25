@@ -38,15 +38,17 @@ namespace FolderManager
             Console.WriteLine("---------------------------------------");
             DateTime currentDay = DateTime.Today; //formwat with "MM-dd-yyyy"
             string dateFormat = "MM-dd-yyyy";
-            
+
             int count = 0;
 
-            sourceDir = "C:\\Users\\GoodBoy\\Downloads\\";
-            destDir = "C:\\Users\\GoodBoy\\Downloads\\";
+            sourceDir = @"C:\Users\GoodBoy\Downloads\";
+            destDir = @"C:\Users\GoodBoy\Downloads\" + currentDay.ToString(dateFormat);
 
             DirectoryInfo dir = new DirectoryInfo(sourceDir);
-            Console.WriteLine(sourceDir + currentDay.ToString("MM-dd-yyyy"));
-            DirectoryInfo dest = Directory.CreateDirectory(sourceDir + currentDay.ToString());
+            Console.WriteLine(sourceDir + currentDay.ToString(dateFormat));
+
+            //Root destination made 11/21
+            DirectoryInfo dest = Directory.CreateDirectory(destDir);
 
 
             List<FileInfo> filesDoc = new List<FileInfo>();
@@ -72,7 +74,6 @@ namespace FolderManager
             Console.WriteLine(count.ToString());
 
             //Get extension has period in
-            Console.ReadLine();
             string fileExt;
             #region File Sorting
             foreach (FileInfo file in currentFiles)
@@ -113,6 +114,20 @@ namespace FolderManager
 
             #region Place in Proper Folder
             //if folder exists
+            //create Folders with extensions
+            //DirectoryInfo extFolder = new DirectoryInfo(destDir);
+            DirectoryInfo newFolder = Directory.CreateDirectory(destDir + "\\" + "Files");
+
+            if (filesDoc.Count > 0)
+            {
+                //create folder with this extension 11/21
+                foreach (FileInfo x in filesDoc)
+                {
+                    //soure+file -> newFolder
+                    File.Move(sourceDir + "\\" + x.ToString(), destDir + "\\" + "Files" + "\\" + x.ToString());
+                    Console.WriteLine(x.ToString());
+                }
+            }
 
             #endregion
             Console.WriteLine("---------------------------------------");
